@@ -19,6 +19,8 @@ P12R=np.diag(P21['R']*P1).T  #P(theta1 | theta2=R)
 P12L=np.diag(P21['L']*P1).T  #P(theta1 | theta2=L)
 P12R=np.array([normalize(P12R[0],P12R[1])]) #normalized P(theta1 | theta2=R)
 P12L=np.array([normalize(P12L[0],P12L[1])]) #normalized P(theta1 | theta2=L)
+
+
 def sampleprobab(iterations):
     picksample1=random.choice([0,1])   #0=tails, 1=heads 
     picksample2=random.choice(['R','L'])  #'R' is right, 'L' is left
@@ -55,6 +57,7 @@ def sampleprobab(iterations):
                 count2+=1
     return(count1,count2)
             
+
 samples=int(input("enter the number of samples you want to run gibbs sampling for: \n"))
 count1,count2=sampleprobab(samples)
 print("sampled probability for left and right are {} and {}".format(count1/samples,count2/samples))
